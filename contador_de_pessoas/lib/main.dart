@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(MaterialApp(
-      //Função para invocar o App
+    //Função para invocar o App
       title: 'Contador de pessoas', //Só interno, não serve para nada
       home: Home()));
 }
@@ -17,15 +17,15 @@ class _HomeState extends State<Home> {
   String _infotext = "Pode entrar!";
   int _people = 0;
 
-  void _changePeople(int delta){
+  void _changePeople(int delta) {
     setState(() {
-      _people +=delta;
+      _people += delta;
 
-      if(_people < 0){
+      if (_people < 0) {
         _infotext = "Mundo invertido?!";
-      }else if (_people <= 10){
+      } else if (_people <= 10) {
         _infotext = "Pode entrar!!";
-      }else{
+      } else {
         _infotext = "Não temos mais lugar!!";
       }
     });
@@ -63,7 +63,8 @@ class _HomeState extends State<Home> {
                           fontSize: 50,
                           color: Colors.white,
                         )),
-                    onPressed: () {_changePeople(1);
+                    onPressed: () {
+                      _changePeople(1);
                     },
                   ),
                 ),
@@ -75,7 +76,9 @@ class _HomeState extends State<Home> {
                           fontSize: 50,
                           color: Colors.white,
                         )),
-                    onPressed: () {_changePeople(-1);},
+                    onPressed: () {
+                      _changePeople(-1);
+                    },
                   ),
                 ),
               ],
