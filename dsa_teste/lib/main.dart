@@ -4,7 +4,9 @@ import "package:flutter/material.dart";
 import "package:http/http.dart" as http;
 
 const request =
-    'http://192.168.0.147:1156/datasnap/rest/TServerMethods1/GetClientes';
+    'http://192.168.1.156:211/datasnap/rest/TServerMethods1/GetClientes';
+
+String jsonn = '';
 
 void main() {
   runApp(MaterialApp(
@@ -16,6 +18,7 @@ class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
+
 
 class _HomeState extends State<Home> {
   @override
@@ -49,7 +52,7 @@ class _HomeState extends State<Home> {
                 return Container(
                   color: Colors.white,
                   child: Text(
-                    snapshot.data["result"][0]["nome"],
+                    snapshot.data["result"][_getlen(snapshot.data)]["nome"],
                     style: TextStyle(fontSize: 25),
                   ),
                   alignment: Alignment.center,
@@ -64,9 +67,11 @@ class _HomeState extends State<Home> {
 
 Future<Map> getData() async {
   http.Response response = await http.get(request);
+  //jsonn = json.decode(response.body);
   return json.decode(response.body);
 }
 
-
-
+int _getlen(json){
+  return json["result"].length -1;
+}
 
